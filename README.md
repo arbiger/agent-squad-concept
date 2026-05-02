@@ -37,10 +37,10 @@ agent-squad/
 │   ├── coder.md
 │   ├── blue-reviewer.md
 │   └── red-reviewer.md
-└── _Archived_Data/     ← Old ideas (consolidated)
+└── red-team-review-gemini3pro.md  ← Red team adversarial review
 ```
 
 ## References
 
-- Agent-cortex (memory backbone)
+- [Agent-cortex](https://github.com/arbiger/agent-cortex) — memory backbone
 - Superpower skills (writing-plans, ccl-red-team, subagent-driven-development)
