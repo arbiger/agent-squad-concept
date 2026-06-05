@@ -156,8 +156,12 @@ Log findings to <project>/reviews/red-review.md
 | `ccl-red-team` | RED REVIEW | Full adversarial review prompts |
 
 **Model Configuration:**
-- Default: MiniMax-M2.7 (one model for all)
-- Optional override: Gemini 3.1 Pro for Red Review (only if evidence shows MiniMax insufficient)
+- Default: MiniMax-M2.7 (team-lead and coder both use M2.7)
+- PM-Reviewer: OpenAI GPT-5.5 (validation/judgment)
+- Codex-Executor: GPT-5.3-codex (complex coding only)
+- Optional override: Gemini 3.1 Pro for Red Review (only if evidence shows insufficient)
+
+> Matches OpenCode config: team-lead=M2.7, pm-reviewer=GPT-5.5, coder=M2.7, codex-executor=GPT-5.3-codex.
 
 ---
 

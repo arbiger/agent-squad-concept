@@ -46,15 +46,25 @@ PLAN → INITIAL → BLUE REVIEW → RED REVIEW → RELEASE
 
 ## Model Separation Principle
 
-**Leader model** (planning/judgment): GPT-5.5, Claude Opus, etc.
-- Handles planning, task decomposition, quality judgment, final review
-- Never edits files directly
+**Team-Lead model** (interface/coordination, no direct coding): MiniMax-M2.7
+- Handles human-facing communication, clarifies demands, summarizes work
+- Delegates validation/planning review to PM-Reviewer and implementation to Coder/Codex-Executor
+- Does NOT write code or make detailed plans directly
 
-**Team models** (implementation/verification): MiniMax-M2.7, Qwen-32B, etc.
-- Handle exploration, implementation, verification, specialist review
-- Run lint/typecheck/tests, report changed files/tests/risks
+**PM-Reviewer model** (review/validation/judgment): OpenAI GPT-5.5
+- Validates plans align with human intent
+- Reviews completed work against requirements
+- Flags gaps before implementation starts
 
-> Model names are examples, not hard requirements.
+**Coder model** (implementation/execution): MiniMax-M2.7
+- Handles routine implementation, bug fixes, tests
+- Works from Team-Lead/PM-Reviewer-approved plans
+
+**Codex-Executor model** (complex coding/deep-dives): GPT-5.3-codex (OpenAI)
+- Handles complex code execution, debugging, technical deep-dives
+- edit/bash access, no task dispatch
+
+> This matches OpenCode's configuration: team-lead=M2.7, pm-reviewer=GPT-5.5, coder=M2.7, codex-executor=GPT-5.3-codex.
 
 ---
 
