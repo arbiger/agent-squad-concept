@@ -62,29 +62,99 @@ Each session, the agent wakes up "fresh" but reads its memory files. This provid
 
 ---
 
-## 📁 File Structure
+## 📁 Directory Structure
 
 ```
 agent-soul-framework/
-├── README.md           # This file
-├── SOUL.md            # Personality & decision framework (template)
-├── HEARTBEAT.md       # Proactive trigger scripts (template)
-├── IDENTITY.md        # Identity metadata (template)
-├── MEMORY.md          # Memory system (template)
-├── ARCHITECTURE.md    # Design philosophy & rationale
-├── BLAST_RADIUS.md    # Decision framework in detail
-└── EXAMPLES/          # Usage examples & variations
+├── README.md                 # This file
+├── SOUL.md                   # Personality & decision framework
+├── IDENTITY.md               # Identity metadata
+├── HEARTBEAT.md              # Proactive trigger scripts
+├── MEMORY.md                 # Long-term memory
+├── ARCHITECTURE.md           # Design philosophy & rationale
+├── BLAST_RADIUS.md           # Decision framework in detail
+
+├── framework/                # Multi-agent squad framework (from calling-agent-squad)
+│   ├── Main.md              # Leader/Manager agent - coordinates team
+│   ├── Parser.md            # Task decomposer
+│   ├── Reviewer.md           # Red-team QA - "I can oppose, but I must make you better"
+│   ├── Execution_Roles.md    # Coder, Analyst, Writer, Researcher, etc.
+│   ├── Support_Roles.md      # SP-Expert, Observer, etc.
+│   ├── Arbitration_Workflow.md
+│   ├── BOOTSTRAP_SOP.md
+│   └── Customization_Guide.md
+
+├── agents/                   # Pre-defined agent configs (from openclaw-calling-agent-squad)
+│   ├── squad-manager/       # SOUL, IDENTITY, HEARTBEAT, TOOLS, USER, AGENTS
+│   ├── architect/
+│   ├── researcher/
+│   ├── coder/
+│   ├── code-reviewer/
+│   ├── brand-reviewer/
+│   ├── copywriter/
+│   └── observer/
+
+├── skills/                   # OpenClaw skills
+│   ├── mission_logger/
+│   ├── open-claude-design/
+│   ├── squad_manager/
+│   └── taskpad/
+
+├── claude-code/              # Claude Code specific
+│   └── CLAUDE_CODE_LEAKS.md  # Prompt template with 6 key areas
+
+├── templates/
+│   └── handbook.md
+
+├── squad-init.sh            # Squad initialization script
+└── squad-manager.prose       # Squad manager documentation
 ```
+
+---
+
+## 👥 Multi-Agent Squad Pattern
+
+The framework supports a **leader + sub-agents** pattern:
+
+1. **Squad Manager (Main)** — Coordinates the team, delegates tasks, runs arbitration
+2. **Architect** — System planning and blueprint design
+3. **Researcher** — Information gathering and fact-checking
+4. **Coder** — Code implementation
+5. **Reviewer** — Red-team QA: *"I can oppose, but I must make you better"*
+6. **Copywriter** — Marketing and technical content
+7. **Observer** — Mission logging and tracking
+
+### Red-Team Reviewer (Key Concept)
+
+The Reviewer agent is not a "yes-man." Its role:
+- Active opposition to improve quality
+- Fatal issues must be reported immediately
+- General advice for optimization
+- Slogan: *"I can oppose, but I must make you better"*
 
 ---
 
 ## 🚀 Quick Start
 
-1. **Copy the template files** into your AI agent's workspace
-2. **Customize IDENTITY.md** with your agent's name, emoji, and metadata
-3. **Edit SOUL.md** to define your agent's personality and decision style
-4. **Set up HEARTBEAT.md** triggers in your agent's scheduler
-5. **Initialize MEMORY.md** with any existing context
+### Single Agent
+1. Copy `SOUL.md`, `IDENTITY.md`, `HEARTBEAT.md`, `MEMORY.md` to your agent's workspace
+2. Customize with your agent's personality
+3. Set up heartbeat triggers
+
+### Multi-Agent Squad
+1. Use `squad-init.sh` to initialize a project
+2. Configure roles in `framework/` directory
+3. Each agent has its own SOUL/IDENTITY/HEARTBEAT in `agents/`
+4. Leader agent runs arbitration through Reviewer
+
+### Claude Code
+See `claude-code/CLAUDE_CODE_LEAKS.md` for prompt template with:
+- Plan Mode Default
+- Subagent Strategy
+- Self-Improvement Loop
+- Verification Before Done
+- Demand Elegance
+- Autonomous Bug Fixing
 
 ---
 
@@ -99,8 +169,7 @@ The Agent Soul Framework draws from:
 - Human memory continuity
 - Proactive social behaviors (checking in, following up)
 - Clear decision boundaries
-
-It's not about making the AI lie about being human. It's about giving the AI enough identity and continuity that interactions feel *consistent* and *meaningful*.
+- Multi-agent coordination with red-team quality gates
 
 ---
 
